@@ -37,15 +37,15 @@ const validate_invoice = async() => {
 const create_invoice =  async() =>{
     const data = await validate_invoice().catch((err) => {`Ha ocurrido el siguiente error ${err}`});
 
-    // let total = 0;
-    //     let date = new Date();
-    //     let invoice_data = {
-    //         current_date: ` Year: ${date.getFullYear()}`,
-    //         discount,
-    //         mount,
-    //         total
-    //     }
-    console.log(data);
+    let total = 0;
+        let date = new Date();
+        let invoice_data = {
+            current_date: ` Year: ${date.getFullYear()}`,
+            discount,
+            mount,
+            total
+        }
+    console.log(invoice_data);
 };
 
 
