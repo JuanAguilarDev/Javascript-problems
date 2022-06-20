@@ -1,5 +1,6 @@
 const fs = require('fs');
-const path = '../data/books.json';
+const dir = require('path');
+const path = dir.join(__dirname, '../data/books.json');
 
 // Intialize the path
 try {
@@ -30,23 +31,6 @@ const listBooks = ()=>{
     }
 };
 
-// Show book description
-
-const bookDescription = (numberOfBook) => {
-    try{
-        let books = JSON.parse(fs.readFileSync(path, 'utf8'));
-        let index = books.findIndex(book => book.id == numberOfBook);
-        if(index == -1){
-            console.log('El libro que busca no se encuentra dentro de la base de datos. 😖');
-        }else{
-            console.log(`La descripcion del libro ${books[index].tittle} es: `);
-            console.log(books[index].description);
-        }
-    }catch(err){
-        console.log(err);
-    }
-}
-
 // Create a new book
 const createBook = (author, tittle, description) =>{
     try{
@@ -68,23 +52,6 @@ const createBook = (author, tittle, description) =>{
         }
     }catch(err){
         console.log(err);
-    }
-};
-
-// Delete books
-const deleteBook = (numberOfBook) =>{
-    try{
-        let books = JSON.parse(fs.readFileSync(path, 'utf8'));
-        let index = books.findIndex(book => book.id == numberOfBook);
-        if(index == -1){
-            console.log('El libro que busca no se encuentra dentro de la base de datos. 😖');
-        }else{
-            let data = books.filter(book => book.id === numberOfBook-1);
-            fs.writeFileSync(path, JSON.stringify(data));
-            console.log(`${books[index].tittle} ha sido eliminado de manera exitosa. ✅`);
-        }
-    }catch(err){
-        console.log('Error: ' + err);
     }
 };
 
@@ -114,7 +81,5 @@ const editBooks = (numberOfBook,title, author, description) => {
 module.exports = {
     listBooks, 
     createBook, 
-    editBooks,
-    bookDescription,
-    deleteBook
+    editBooks
 }

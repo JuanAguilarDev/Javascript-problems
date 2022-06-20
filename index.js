@@ -1,4 +1,4 @@
-const bookManager = require('./module/example-07');
+const bookManager = require('./modules/example-07');
 
 
 bookManager.createBook('Juan', 'El principito 2' , 'Libro infantil. ');
